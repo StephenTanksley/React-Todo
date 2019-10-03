@@ -2,13 +2,7 @@ import React from 'react';
 import TodoForm from './components/TodoComponents/TodoForm'
 import data from './components/TodoComponents/TodoList'
 import Todo from './components/TodoComponents/Todo'
-import styled from 'styled-components'
-
-const Container = styled.div`
-  margin: 0 auto;
-  justify-content: center;
-  align-items: center;
-`
+import '../src/App.css'
 
 
 class App extends React.Component {
@@ -22,7 +16,7 @@ class App extends React.Component {
   toggleItem = (e, itemId) => {
   e.preventDefault();
   this.setState({
-    toDo: this.state.tasks.map(item => {
+    tasks: this.state.tasks.map(item => {
       if (item.id === itemId) {
         return{
           ...item,
@@ -40,19 +34,19 @@ class App extends React.Component {
     e.preventDefault();
     const newItem = {
       id: Date.now(),
-      toDo: itemName,
+      name: itemName,
       completed: false
     };
 
     this.setState({
-      task: [newItem, ...this.state.tasks]
+      tasks: [...this.state.tasks, newItem]
     });
   };
 
   clearCompleted = (e) => {
     e.preventDefault();
     this.setState({
-    toDo: this.state.tasks.filter(item => {
+    tasks: this.state.tasks.filter(item => {
       return !item.completed
       })
     })
@@ -64,10 +58,7 @@ class App extends React.Component {
   // this component is going to take care of state, and any change handlers you need to work with your state
   render() {
     return (
-      <Container>
       <div className="App">
-        {/* <h1> HI </h1> */}
-
          <div className="title">
            <h2>To-Do List</h2>
            <TodoForm addItem={this.addItem} />
@@ -78,7 +69,7 @@ class App extends React.Component {
              <Todo 
               key={item.id}
               item={item}
-              onClick={e => this.toggleItem(e, item.id)}
+              onClick={(e) => this.toggleItem(e, item.id)}
               />
           ))}
 
@@ -88,7 +79,6 @@ class App extends React.Component {
         </div>
 
       </div>
-      </Container>
     );
   }
 }
