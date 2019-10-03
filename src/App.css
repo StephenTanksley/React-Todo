@@ -30,6 +30,7 @@ span {
 
 .App {
   font-family: sans-serif;
+  justify-content: center;
   text-align: center;
   padding: 0 3rem;
   max-width: 80%vw;
@@ -38,14 +39,26 @@ span {
 
 .title {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  font-size: 1.6rem;
+  margin-top: 3rem;
 }
 
 h1 {
   text-align: left;
 }
-
+.form-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin: 1rem;
+    padding: 1rem;
+}
+.list-container {
+    display: flex;
+    flex-direction: column;
+}
 .to-do-list {
   display: flex;
   flex-flow: row wrap;
@@ -78,25 +91,27 @@ form > input {
   background-color: #2d2d37;
   border: none;
   padding: 6px 0;
-  font-size: 1rem;
+  font-size: 1.2rem;
   width: 240px;
   outline: 0;
   color: white;
-  border-bottom: 1px solid #e64944;
+  border-bottom: 1px solid #f3cb1a;
+  border-width: .15rem;
   margin-right: 8px;
 }
 
 button {
-  background-color: #e64944;
+  background-color: #6e9cf1;
   border: none;
   color: white;
-  font-size: 16px;
-  padding: 6px 14px;
+  font-size: 1.4rem;
+  padding: 1rem 2rem;
+  border-radius: .3rem;
   cursor: pointer;
 }
 
 input::placeholder {
-  color: #e64944;
+  color: #f3cb1a;
   opacity: 1;
 }
 
@@ -104,4 +119,8 @@ input::placeholder {
   background-color: #6d6d82;
   margin-top: 16px;
   font-size: 0.8rem;
+}
+
+div > p {
+    font-size: 1.3rem;
 }

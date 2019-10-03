@@ -60,25 +60,28 @@ class App extends React.Component {
     return (
       <div className="App">
          <div className="title">
-           <h2>To-Do List</h2>
-           <TodoForm addItem={this.addItem} />
+           <h1>To-Do List</h1>
          </div>
-
-         <div className="to-do-list">
-           {this.state.tasks.map(item => (
-             <Todo 
-              key={item.id}
-              item={item}
-              onClick={(e) => this.toggleItem(e, item.id)}
-              />
-          ))}
-
-          <button className="clear-btn" onClick={this.clearCompleted} >
-            Clear Completed
-          </button>
+         <div className="form-container">
+           <TodoForm addItem={this.addItem} />
+          </div>
+        <div className="list-container">
+          <div className="to-do-list">
+            {this.state.tasks.map(item => (
+              <Todo 
+                key={item.id}
+                item={item}
+                onClick={(e) => this.toggleItem(e, item.id)}
+                />
+            ))}
+          </div>
+          <div className="button-container">
+            <button className="clear-btn" onClick={this.clearCompleted} >
+              Clear Completed
+            </button>
+            </div>
+          </div>
         </div>
-
-      </div>
     );
   }
 }
