@@ -12,3 +12,5 @@ const Todo = props => {
 }
 
 export default Todo;
+
+//un-inspired component - it doesn't do any thinking for itself.

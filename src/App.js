@@ -2,7 +2,7 @@ import React from 'react';
 import TodoForm from './components/TodoComponents/TodoForm'
 import data from './components/TodoComponents/TodoList'
 import Todo from './components/TodoComponents/Todo'
-import '../src/App.css'
+import './App.css'
 
 
 class App extends React.Component {
@@ -13,6 +13,30 @@ class App extends React.Component {
     }
   }
  
+  addItem = (e, itemName) => {
+    e.preventDefault();
+    const newItem = {
+      id: Date.now(),
+      name: itemName,
+      completed: false
+    };
+
+    this.setState({
+      tasks: [...this.state.tasks, newItem]
+    });
+  };
+
+  //This function will get rid of any items which have completed === true;
+  clearCompleted = (e) => {
+    e.preventDefault();
+    this.setState({
+    tasks: this.state.tasks.filter(item => {
+      return !item.completed
+      })
+    })
+  }
+
+  //Creating a function to 
   toggleItem = (e, itemId) => {
   e.preventDefault();
   this.setState({
@@ -28,30 +52,6 @@ class App extends React.Component {
       })
     });
   };
-
-
-  addItem = (e, itemName) => {
-    e.preventDefault();
-    const newItem = {
-      id: Date.now(),
-      name: itemName,
-      completed: false
-    };
-
-    this.setState({
-      tasks: [...this.state.tasks, newItem]
-    });
-  };
-
-  clearCompleted = (e) => {
-    e.preventDefault();
-    this.setState({
-    tasks: this.state.tasks.filter(item => {
-      return !item.completed
-      })
-    })
-  }
-
 
   // you will need a place to store your state in this component.
   // design `App` to be the parent component of your application.
@@ -87,3 +87,5 @@ class App extends React.Component {
 }
 
 export default App;
+
+//App does ALL the thinking. It does a lot of the heavy lifting of this application.
